@@ -1,5 +1,10 @@
 package com.watermelon.board.common.cache;
 
-public class commonServerCache {
+import com.watermelon.board.server.Board;
 
+import java.util.Map;
+
+public class commonServerCache {
+    // 存储结构
+    public static Map<String, Board> BOARD_MAP;
 }
