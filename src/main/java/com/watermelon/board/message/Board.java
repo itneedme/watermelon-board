@@ -1,6 +1,4 @@
-package com.watermelon.board.server;
-
-import java.util.Set;
+package com.watermelon.board.message;
 
 public class Board {
     public String Bid;
@@ -8,5 +6,4 @@ public class Board {
     public String adminId;
 
     public Sheet[] sheets;
-
 }

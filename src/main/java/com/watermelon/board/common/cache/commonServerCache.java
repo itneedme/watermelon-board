@@ -1,6 +1,6 @@
 package com.watermelon.board.common.cache;
 
-import com.watermelon.board.server.Board;
+import com.watermelon.board.message.Board;
 
 import java.util.Map;
 
