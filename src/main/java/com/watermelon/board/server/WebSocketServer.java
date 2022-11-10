@@ -13,7 +13,7 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
-@ServerEndpoint("/imserver/{userId}")
+@ServerEndpoint("/watermelon/{userId}")
 @Component
 public class WebSocketServer {
 
