@@ -1,7 +1,0 @@
-{
-  "name": "server",
-  "version": "1.0.0",
-  "dependencies": {
-    "nodejs-websocket": "^1.7.2"
-  }
-}
