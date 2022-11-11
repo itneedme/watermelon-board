@@ -8,6 +8,7 @@ public class BoardOperate extends abstractOperate {
 
     @Override
     public void insert() {
+        // 在redis中增加相关信息
 
     }
 
