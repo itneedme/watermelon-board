@@ -9,8 +9,10 @@ import com.watermelon.board.ot.abstractOperate;
 public class BoardOT implements IOT {
 
     @Override
-    public boolean generalOT(Class<abstractOperate> clazz) {
+    public boolean generalOT(abstractOperate opt) {
 
         return false;
     }
+
+
 }

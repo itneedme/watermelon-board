@@ -7,8 +7,7 @@ public interface IOT {
 
     /**
      * 通用OT。如果版本不符合应该的版本，就退回
-     * @param clazz
      * @return
      */
-    boolean generalOT(Class<abstractOperate> clazz);
+    boolean generalOT(abstractOperate opt);
 }
