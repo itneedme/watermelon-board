@@ -1,15 +1,17 @@
-package com.watermelon.board.handler;
+package com.watermelon.board.handler.handlerImpl;
 
-import com.watermelon.board.config.WsSessionManager;
+import com.watermelon.board.handler.session.WsSessionManager;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-import java.time.LocalDateTime;
 
 
 @Component
+@Slf4j
 public class HttpAuthHandler extends TextWebSocketHandler {
     /**
      * socket 建立成功事件
@@ -19,6 +21,8 @@ public class HttpAuthHandler extends TextWebSocketHandler {
      */
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        log.info(session.getId() + "建立ws连接");
+
         Object token = session.getAttributes().get("token");
         if (token != null) {
             // 用户连接成功，放入在线用户缓存
@@ -41,6 +45,7 @@ public class HttpAuthHandler extends TextWebSocketHandler {
      */
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+        log.info("发送文本消息");
         // 获得客户端传来的消息
         String payload = message.getPayload();
         Object token = session.getAttributes().get("token");
@@ -57,6 +62,7 @@ public class HttpAuthHandler extends TextWebSocketHandler {
      */
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+        log.info("关闭ws连接");
         Object token = session.getAttributes().get("token");
         if (token != null) {
             // 用户退出，移除缓存
@@ -67,6 +73,17 @@ public class HttpAuthHandler extends TextWebSocketHandler {
 
 
         }
+    }
+
+    @Override
+    protected void handleBinaryMessage(WebSocketSession session, BinaryMessage message) {
+        log.info("发送二进制消息");
+    }
+
+    @Override
+    public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
+        log.error("异常处理");
+        com.watermelon.board.handler.session.WsSessionManager.removeAndClose(session.getId());
     }
 }
 

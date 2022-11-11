@@ -2,7 +2,9 @@ package com.watermelon.board.message;
 
 public class IApi {
     st st;
-    boradDate boradDate;
+    long sheetId;
+    long userVersion;
+    String userId;
     byte[] data;
 }
 

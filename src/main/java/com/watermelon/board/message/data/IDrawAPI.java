@@ -1,4 +1,4 @@
-package com.watermelon.board.message;
+package com.watermelon.board.message.data;
 
 public class IDrawAPI {
     long serverVersion; // 服务端版本

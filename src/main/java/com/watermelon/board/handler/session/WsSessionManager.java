@@ -1,16 +1,17 @@
 package com.watermelon.board.handler.session;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.socket.WebSocketSession;
-
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
+
+@Slf4j
 public class WsSessionManager {
     /**
      * 保存连接 session 的地方
      */
-    public static ConcurrentHashMap<String, WebSocketSession> SESSION_POOL = new ConcurrentHashMap<>();
-
+    private static ConcurrentHashMap<String, WebSocketSession> SESSION_POOL = new ConcurrentHashMap<>();
     /**
      * 添加 session
      *
@@ -20,7 +21,6 @@ public class WsSessionManager {
         // 添加 session
         SESSION_POOL.put(key, session);
     }
-
     /**
      * 删除 session,会返回删除的 session
      *
@@ -31,7 +31,6 @@ public class WsSessionManager {
         // 删除 session
         return SESSION_POOL.remove(key);
     }
-
     /**
      * 删除并同步关闭连接
      *
@@ -49,7 +48,6 @@ public class WsSessionManager {
             }
         }
     }
-
     /**
      * 获得 session
      *
@@ -61,3 +59,7 @@ public class WsSessionManager {
         return SESSION_POOL.get(key);
     }
 }
+
+/*这里简单通过ConcurrentHashMap来实现了一个 session 池，用来保存已经登录的 web socket 的  session。
+ 服务端发送消息给客户端必须要通过这个 session。
+ */
