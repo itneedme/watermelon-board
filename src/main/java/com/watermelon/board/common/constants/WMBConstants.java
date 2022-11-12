@@ -14,7 +14,5 @@ public class WMBConstants {
 
     public static final String PREFIX_SHEET = "btos";
 
-    public static final String PREFIX_SHEETS = "slist";
-
     public static final String PREFIX_ADMIN = "admin";
 }

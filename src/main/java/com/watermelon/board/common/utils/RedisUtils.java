@@ -59,10 +59,6 @@ public class RedisUtils {
         return PREFIX_SHEET + boardId;
     }
 
-    public String getSheetIdListKey(Long sheetId) {
-        return PREFIX_SHEETS + sheetId;
-    }
-
     public String getDrawListKey(Long boardId, Long sheetId) {
         return boardId + ":" + sheetId;
     }
@@ -79,7 +75,27 @@ public class RedisUtils {
         return redisTemplate.opsForHash().get(key, hashKey);
     }
 
-    /**
-     * adminKey
-     */
+    public Long appendToList(String key, String value) {
+        return redisTemplate.opsForList().rightPush(key, value);
+    }
+
+    public String getValue(String key) {
+        return redisTemplate.opsForValue().get(key);
+    }
+
+    public Long listRemove(String key, String value) {
+        return redisTemplate.opsForList().remove(key, 1, value);
+    }
+
+    public Boolean delete(String key) {
+        return redisTemplate.delete(key);
+    }
+
+    public Long listAdd(String key, String value) {
+        return redisTemplate.opsForList().rightPush(key, value);
+    }
+
+    public boolean contains(String key) {
+        return redisTemplate.hasKey(key);
+    }
 }

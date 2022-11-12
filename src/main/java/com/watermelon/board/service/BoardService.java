@@ -2,6 +2,7 @@ package com.watermelon.board.service;
 
 import com.watermelon.board.dao.RedisDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,7 +25,7 @@ public class BoardService {
     }
 
     /**
-     * todo 删除白板
+     * 删除白板
      */
     public void deleteBoard(Long boardId) {
         redisDao.deleteBoard(boardId);
@@ -41,48 +42,65 @@ public class BoardService {
     }
 
     /**
-     * todo 增添笔触
+     * 增添笔触
      *
      * @param boardId 白板id
-     * @param draw 笔触内容 IDrawAPI中的IDrawType
+     * @param sheetId 页面id
+     * @param draw    笔触内容 IDrawAPI中的IDrawType
+     * @param _drawId 客户端预期的drawId
      * @return 根据版本判断
      * 添加成功 返回DrawID
      * 添加失败 null
      */
-    public String addDraw(Long boardId, String draw) {
-        return redisDao.addDraw();
+    public Long addDraw(Long boardId, Long sheetId, String draw, Long _drawId) {
+        return redisDao.addDraw(boardId, sheetId, draw, _drawId);
     }
 
     /**
-     * todo 删除一个笔触
+     * 删除一个笔触
+     *
      * @param drawId 白板id
+     * @return 是否删除成功
      */
-    public void delDraw(Long drawId) {
-
+    public boolean delDraw(Long drawId) {
+        return redisDao.deleteDraw(drawId);
     }
 
+    /**
+     * @return
+     */
+    public Long addSheet(Long boardId) {
+        return redisDao.createSheet(boardId);
+    }
+
+    public void addSession(Long boardId, Session session) {
+        redisDao.addSession(boardId, session);
+    }
 
     /**
-     * todo 判断对于该用户是否只读
-     * @param drawId 笔触id
+     * 判断对于该用户是否只读
+     *
+     * @param boardId 白板id
      * @param session 用户session
      * @return 是否只读
      */
-    public boolean isReadOnly(Long drawId, String session) {
-
-        return false;
+    public boolean isReadOnly(Long boardId, Session session) {
+        return redisDao.isReadOnly(boardId, session);
     }
 
     /**
-     * todo 管理员更换
+     * 管理员更换
      *
      * @param boardId 白板id
      * @return 返回指定下个管理员的session
      * 若为null，则该画板已经没有人
      */
     public String changeAdmin(Long boardId) {
+        return redisDao.changeAdmin(boardId);
+    }
 
-        return "";
+    public void delSession(Long boardId, Session session) {
+        redisDao.delSession(boardId, session);
     }
 
 }
