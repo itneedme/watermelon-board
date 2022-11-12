@@ -33,6 +33,12 @@ public class BoardService {
         return redisDao.getDrawOfBoard(boardId);
     }
 
+    /**
+     *
+     * @return 根据版本判断
+     * true 添加成功
+     * false 添加失败
+     */
     public boolean addDraw() {
         return redisDao.addDraw();
     }
