@@ -24,10 +24,10 @@ public class BoardService {
     }
 
     /**
-     * 删除白板
+     * todo 删除白板
      */
-    public void deleteBoard() {
-
+    public void deleteBoard(Long boardId) {
+        redisDao.deleteBoard(boardId);
     }
 
     /**
@@ -41,6 +41,7 @@ public class BoardService {
     }
 
     /**
+     * todo
      * @return 根据版本判断
      * 添加成功 返回DrawID
      * 添加失败 null
@@ -50,6 +51,7 @@ public class BoardService {
     }
 
     /**
+     * todo
      * 删除一个笔触
      */
     public void delDraw(Long drawId) {
@@ -57,6 +59,7 @@ public class BoardService {
     }
 
     /**
+     * todo
      * 判断是否只读
      */
     public boolean isReadOnly() {
@@ -65,7 +68,12 @@ public class BoardService {
     }
 
     /**
+     * todo
      * 管理员更换
+     *
+     * @return
+     * 返回指定下个管理员的session
+     * 若为null，则该画板已经没有人
      */
     public String changeAdmin(Long boardId) {
 

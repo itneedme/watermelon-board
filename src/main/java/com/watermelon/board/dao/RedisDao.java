@@ -80,4 +80,8 @@ public class RedisDao {
     public boolean deleteSheet(Long boardId, Long sheetId) {
         return redisUtils.setHashId(redisUtils.getBoardKey(boardId), redisUtils.getSheetKey(sheetId), null);
     }
+
+    public void deleteBoard(Long boardId) {
+
+    }
 }
