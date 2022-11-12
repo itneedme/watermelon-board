@@ -41,38 +41,43 @@ public class BoardService {
     }
 
     /**
-     * todo
+     * todo 增添笔触
+     *
+     * @param boardId 白板id
+     * @param draw 笔触内容 IDrawAPI中的IDrawType
      * @return 根据版本判断
      * 添加成功 返回DrawID
      * 添加失败 null
      */
-    public String addDraw() {
+    public String addDraw(Long boardId, String draw) {
         return redisDao.addDraw();
     }
 
     /**
-     * todo
-     * 删除一个笔触
+     * todo 删除一个笔触
+     * @param drawId 白板id
      */
     public void delDraw(Long drawId) {
 
     }
 
+
     /**
-     * todo
-     * 判断是否只读
+     * todo 判断对于该用户是否只读
+     * @param drawId 笔触id
+     * @param session 用户session
+     * @return 是否只读
      */
-    public boolean isReadOnly() {
+    public boolean isReadOnly(Long drawId, String session) {
 
         return false;
     }
 
     /**
-     * todo
-     * 管理员更换
+     * todo 管理员更换
      *
-     * @return
-     * 返回指定下个管理员的session
+     * @param boardId 白板id
+     * @return 返回指定下个管理员的session
      * 若为null，则该画板已经没有人
      */
     public String changeAdmin(Long boardId) {
