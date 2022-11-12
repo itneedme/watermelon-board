@@ -1,6 +1,7 @@
 package com.watermelon.board.service;
 
-import com.watermelon.board.message.IApi;
+import com.watermelon.board.dao.RedisDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,14 +9,22 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class BoardService {
+
+    @Autowired
+    private RedisDao redisDao;
+
     /**
-     * todo 新建白板
+     * 新建白板
      *
      * @return 白板id
      */
-    public String createBoard(IApi api) {
+    public Long createBoard() {
         // 调用dao
-
-        return "";
+        return redisDao.createBoard();
     }
+
+    /**
+     * todo 加入新用户，返回所有笔触
+     */
+//    public Object
 }

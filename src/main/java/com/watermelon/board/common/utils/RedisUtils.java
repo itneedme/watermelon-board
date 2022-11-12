@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 @Component
-public class redisUtils {
+public class RedisUtils {
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
