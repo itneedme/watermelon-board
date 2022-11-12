@@ -78,4 +78,8 @@ public class RedisUtils {
     public Object getHashValue(String key, String hashKey) {
         return redisTemplate.opsForHash().get(key, hashKey);
     }
+
+    /**
+     * adminKey
+     */
 }

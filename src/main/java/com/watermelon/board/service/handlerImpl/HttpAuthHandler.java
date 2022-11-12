@@ -54,7 +54,6 @@ public class HttpAuthHandler extends TextWebSocketHandler {
         Object token = session.getAttributes().get("token");
         //这里向全部用户广播笔触数据，待做
 
-
     }
 
     /**

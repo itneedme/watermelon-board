@@ -30,7 +30,6 @@ public class ServerBootStrap {
         redisUtils.setId(BOARDID, "0");
 
         redisUtils.setId(DRAWID, "0");
-
     }
 
 }

@@ -32,6 +32,7 @@ public class RedisDao {
      */
     public boolean addDraw() {
 
+
         return false;
     }
 

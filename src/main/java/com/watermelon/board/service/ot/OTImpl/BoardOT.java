@@ -13,5 +13,4 @@ public class BoardOT implements IOT {
         return false;
     }
 
-
 }
