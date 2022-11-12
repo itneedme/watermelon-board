@@ -1,7 +1,7 @@
 package com.watermelon.board.config;
 
-import com.watermelon.board.handler.InterceptorImpl.DefaultInterceptor;
-import com.watermelon.board.handler.handlerImpl.HttpAuthHandler;
+import com.watermelon.board.service.InterceptorImpl.DefaultInterceptor;
+import com.watermelon.board.service.handlerImpl.HttpAuthHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
@@ -22,7 +22,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry
-                .addHandler(httpAuthHandler, "/myWS")
+                .addHandler(httpAuthHandler, "/ws")
                 .addInterceptors(defaultInterceptor) // 自定义拦截器
                 .setAllowedOrigins("*");
     }

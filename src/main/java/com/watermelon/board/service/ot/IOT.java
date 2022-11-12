@@ -1,4 +1,4 @@
-package com.watermelon.board.ot;
+package com.watermelon.board.service.ot;
 
 public interface IOT {
 

@@ -1,4 +1,4 @@
-package com.watermelon.board.handler.InterceptorImpl;
+package com.watermelon.board.service.InterceptorImpl;
 
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;

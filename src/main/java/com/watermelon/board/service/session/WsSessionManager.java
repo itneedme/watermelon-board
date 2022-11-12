@@ -1,4 +1,4 @@
-package com.watermelon.board.handler.session;
+package com.watermelon.board.service.session;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.socket.WebSocketSession;
