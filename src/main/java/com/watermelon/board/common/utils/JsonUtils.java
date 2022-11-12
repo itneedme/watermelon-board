@@ -11,10 +11,7 @@ import java.util.Map;
 @Scope("singleton")
 public class JsonUtils {
 
-    @Autowired
-    private JSON json;
-
     public String MapTOJson(Map map) {
-        return json.toJSONString(map);
+        return JSON.toJSONString(map);
     }
 }

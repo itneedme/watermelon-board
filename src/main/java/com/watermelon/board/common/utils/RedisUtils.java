@@ -59,15 +59,19 @@ public class RedisUtils {
         return PREFIX_SHEET + boardId;
     }
 
-    public String getSheetListKey(Long sheetId) {
+    public String getSheetIdListKey(Long sheetId) {
         return PREFIX_SHEETS + sheetId;
+    }
+
+    public String getDrawListKey(Long boardId, Long sheetId) {
+        return boardId + ":" + sheetId;
     }
 
     public String getUndoKey(String boardId, String sheetId) {
         return PREFIX_UNDO + boardId + sheetId;
     }
 
-    public List<String> getValue(String key) {
+    public List<String> getListValue(String key) {
         return redisTemplate.opsForList().range(key, 0, -1);
     }
 

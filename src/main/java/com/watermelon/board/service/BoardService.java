@@ -26,12 +26,10 @@ public class BoardService {
     /**
      * 加入新用户，返回所有笔触
      *
-     * @return 一个包含了该board所有数据的Object
-     * {
-     *     sheet
-     * }
+     * @return 一个包含了该board所有数据的json
+     * 该json结构是一个map<sheetId,Object(DrawType[])
      */
-    public Object getDrawDataOfBoard(Long boardId) {
+    public String getDrawDataOfBoard(Long boardId) {
         return redisDao.getDrawOfBoard(boardId);
     }
 }
