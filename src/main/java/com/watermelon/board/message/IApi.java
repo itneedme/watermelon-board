@@ -5,6 +5,6 @@ public class IApi {
     long sheetId;
     long userVersion;
     String userId;
-    byte[] data;
+    Object data;
 }
 

@@ -19,12 +19,19 @@ public class BoardService {
      * @return 白板id
      */
     public Long createBoard() {
-        // 调用dao
+        // 向redis中增加该画板
         return redisDao.createBoard();
     }
 
     /**
-     * todo 加入新用户，返回所有笔触
+     * 加入新用户，返回所有笔触
+     *
+     * @return 一个包含了该board所有数据的Object
+     * {
+     *     sheet
+     * }
      */
-//    public Object
+    public Object getDrawDataOfBoard(Long boardId) {
+        return redisDao.getDrawOfBoard(boardId);
+    }
 }
