@@ -1,7 +1,9 @@
 package com.watermelon.board.service.handlerImpl;
 
+import com.watermelon.board.service.BoardService;
 import com.watermelon.board.service.session.WsSessionManager;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
@@ -13,6 +15,9 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 @Component
 @Slf4j
 public class HttpAuthHandler extends TextWebSocketHandler {
+
+    @Autowired
+    private BoardService boardService;
     /**
      * socket 建立成功事件
      *
@@ -28,7 +33,6 @@ public class HttpAuthHandler extends TextWebSocketHandler {
             // 用户连接成功，放入在线用户缓存
             WsSessionManager.add(token.toString(), session);
             // todo 这里向这个用户发笔触数据
-
 
         } else {
             throw new RuntimeException("用户登录已经失效!");

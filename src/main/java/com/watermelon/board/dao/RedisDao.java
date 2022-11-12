@@ -36,6 +36,7 @@ public class RedisDao {
     }
 
 
+
     /**
      * 获取所有笔触数据
      * todo 存在并发问题，需要修改

@@ -32,4 +32,8 @@ public class BoardService {
     public String getDrawDataOfBoard(Long boardId) {
         return redisDao.getDrawOfBoard(boardId);
     }
+
+    public boolean addDraw() {
+        return redisDao.addDraw();
+    }
 }
