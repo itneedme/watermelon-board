@@ -30,10 +30,9 @@ public class RedisDao {
      * true 添加成功
      * false 添加失败
      */
-    public boolean addDraw() {
+    public String addDraw() {
 
-
-        return false;
+        return "";
     }
 
 

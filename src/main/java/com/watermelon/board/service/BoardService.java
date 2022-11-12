@@ -42,17 +42,17 @@ public class BoardService {
 
     /**
      * @return 根据版本判断
-     * true 添加成功
-     * false 添加失败
+     * 添加成功 返回DrawID
+     * 添加失败 null
      */
-    public boolean addDraw() {
+    public String addDraw() {
         return redisDao.addDraw();
     }
 
     /**
      * 删除一个笔触
      */
-    public void delDraw() {
+    public void delDraw(Long drawId) {
 
     }
 
@@ -71,7 +71,5 @@ public class BoardService {
 
         return "";
     }
-
-
 
 }
