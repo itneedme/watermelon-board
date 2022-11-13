@@ -69,6 +69,12 @@ public class RedisDao {
         return jsonUtils.MapTOJson(drawMap);
     }
 
+    /*
+    这里应该有应该获取所有白板id的一个函数
+     */
+
+
+
     public Long createBoard() {
         // 创建boardID;
         Boolean absent = false;

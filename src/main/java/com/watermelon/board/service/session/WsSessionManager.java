@@ -1,8 +1,11 @@
 package com.watermelon.board.service.session;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 
@@ -56,7 +59,46 @@ public class WsSessionManager {
      */
     public static WebSocketSession get(String key) {
         // 获得 session
+
         return SESSION_POOL.get(key);
+    }
+    /**
+     * 发送消息给指定用户
+     *
+     * @param umac
+     * @param message
+     */
+
+    public static void sendToUser(String umac,String message) throws IOException {
+        WebSocketSession webSocketSession = get(umac);
+        if(!webSocketSession.isOpen()){
+            return;
+        }
+        synchronized (umac) {
+            webSocketSession.sendMessage(new TextMessage(message));
+        }
+    }
+
+
+    /**
+     * 发送消息给所有用户
+     *
+     * @param message
+     */
+
+    public static void sendToAll(String message) throws IOException {
+        Set set =  SESSION_POOL.keySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()){
+            String key = (String) iterator.next();
+            WebSocketSession webSocketSession = get(key);
+            if(!webSocketSession.isOpen()){
+                continue;
+            }
+            synchronized (key) {
+                webSocketSession.sendMessage(new TextMessage(message));
+            }
+        }
     }
 }
 

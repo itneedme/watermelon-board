@@ -3,11 +3,14 @@ package com.watermelon.board.message;
 /**
  * st枚举
  */
-public enum st {
+public enum St {
     connect,
-    sheet,
+    delsheet,
+    addsheet,
     draw,
     delete,
     readOnly,
     changeAdmin,
 }
+
+//枚举用大写不然会报错

@@ -4,6 +4,9 @@ import com.watermelon.board.dao.RedisDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Service;
+import org.springframework.web.socket.WebSocketSession;
+
+import java.util.List;
 
 /**
  * 关于白板的业务类
@@ -41,6 +44,12 @@ public class BoardService {
         return redisDao.getDrawOfBoard(boardId);
     }
 
+    /* todo 这里应该还要有一个返回所有白板id的函数,不然return的只有该白板id下的笔触数据
+     */
+//    public List<Long> getAllBoard(){
+//        return redisDao.getAllBoard();
+//    }
+
     /**
      * 增添笔触
      *
@@ -55,6 +64,10 @@ public class BoardService {
     public Long addDraw(Long boardId, Long sheetId, String draw, Long _drawId) {
         return redisDao.addDraw(boardId, sheetId, draw, _drawId);
     }
+
+    /* todo 这里应该还要有一个返回当前服务端版本drawid的函数
+
+     */
 
     /**
      * 删除一个笔触
@@ -72,6 +85,9 @@ public class BoardService {
     public Long addSheet(Long boardId) {
         return redisDao.createSheet(boardId);
     }
+
+    /*todo 删除表
+     */
 
     public void addSession(Long boardId, Session session) {
         redisDao.addSession(boardId, session);
